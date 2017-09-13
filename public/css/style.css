@@ -1,0 +1,33 @@
+body{text-align: center;
+    margin: 0 auto;}
+h1{
+    color: darkblue;
+}
+
+h3{
+    color: black;
+}
+
+a {
+    color: #8113e8;
+    font-size: 1.3em;
+    text-decoration:none;
+    transition: 0.2s;
+}
+
+a:hover {color: #990000;}
+
+a:active {color:#000;}
+
+
+/*form*/
+.ok{
+    border: 3px solid green;
+}
+.error{
+    border: 3px solid red;
+}
+
+.row{
+    position: relative;
+}

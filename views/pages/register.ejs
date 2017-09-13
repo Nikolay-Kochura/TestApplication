@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+
+    </style>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i; //name-_09@mail09-.com
+            var mail = $('#mail');
+
+            mail.blur(function(){
+                if(mail.val() != ''){
+                    if(mail.val().search(pattern) == 0){
+                        $('#valid').text('Корректный E-mail');
+                        $('#submit').attr('disabled', false);
+                        $('#submit').attr('id','active1');
+                        mail.removeClass('error').addClass('ok');
+                    }else{
+                        $('#valid').text('Некорректный E-mail!');
+                        $('#submit').attr('disabled', true);
+                        mail.addClass('error');
+                    }
+                }else{
+                    $('#valid').text('Поле e-mail не должно быть пустым!');
+                    mail.addClass('error');
+                    $('#submit').attr('disabled', true);
+                }
+            });
+        });
+    </script>
+    <title>Форма</title>
+</head>
+
+<body>
+<h1>Пожалуйста, заполните форму</h1>
+<!--<div class="row">-->
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <form action="/register" method="post">
+        <div class="form-group">
+        <p>Имя: <input type="text" class="form-control" name="firstName" ></p>
+            </div>
+
+        <div class="form-group">
+        <p>Фамилия: <input type="text" class="form-control" name="lastName" ></p>
+            </div>
+
+        <div class="form-group">
+    <p>E-mail: <input type="text" class="form-control" name="mail" id="mail" /> <span id="valid"></span></p>
+            </div>
+    <p><input type="submit" class="btn btn-primary" name="submit" id="submit" value="Отправить" disabled /></p>
+</form>
+    <a href="/users">Пользователи, зарегистрированные в текущей сессии</a>
+</div>
+<div class="col-md-3"></div>
+</body>
+</html>
